@@ -30,7 +30,12 @@ class OrderServiceTest {
         orderInfo.setOrderMenus(
                 List.of(
                         new OrderMenuDTO(1, 10),
-                        new OrderMenuDTO(2, 10)
+                        new OrderMenuDTO(2, 10),
+                        new OrderMenuDTO(3, 10),
+                        new OrderMenuDTO(4, 10),
+                        new OrderMenuDTO(5, 10),
+                        new OrderMenuDTO(6, 10),
+                        new OrderMenuDTO(7, 10)
                 )
         );
 

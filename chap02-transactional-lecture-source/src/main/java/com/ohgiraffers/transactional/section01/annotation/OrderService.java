@@ -3,7 +3,9 @@ package com.ohgiraffers.transactional.section01.annotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,7 +43,12 @@ public class OrderService {
 //            menuCode.add(orderMenu.getMenuCode());
 //        }
 
-        System.out.println("menuCode = " + menuCode);
+//        System.out.println("menuCode = " + menuCode);
+        Map<String, List<Integer>> map = new HashMap<>();
+        map.put("menuCodes", menuCode);
+
+        List<Menu> menus = menuMapper.selectMenuByMenuCodee(map);
+        menus.forEach(System.out::println);
 
         /* 설명. 2. 주문한 메뉴 별로 Menu엔티티에 담아서 조회(select)해 오기(부가적인 메뉴의 정보 추출) */
 

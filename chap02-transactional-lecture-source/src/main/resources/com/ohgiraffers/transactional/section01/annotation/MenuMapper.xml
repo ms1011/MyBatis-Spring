@@ -5,4 +5,25 @@
 
 <mapper namespace="com.ohgiraffers.transactional.section01.annotation.MenuMapper">
 
+    <resultMap id="menuResultMap" type="com.ohgiraffers.transactional.section01.annotation.Menu">
+        <id property="menuCode" column="MENU_CODE"/>
+        <result property="menuName" column="MENU_NAME"/>
+        <result property="menuPrice" column="MENU_PRICE"/>
+        <result property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="orderableStatus" column="ORDERABLE_STATUS"/>
+    </resultMap>
+
+    <select id="selectMenuByMenuCodee" resultMap="menuResultMap" parameterType="hashmap">
+        SELECT
+              A.MENU_CODE
+            , A.MENU_NAME
+            , A.MENU_PRICE
+            , A.CATEGORY_CODE
+            , A.ORDERABLE_STATUS
+        FROM TBL_MENU A
+        WHERE MENU_CODE IN
+        <foreach collection="menuCodes" item="menuCode" open="(" close=")" separator=", ">
+            #{menuCode}
+        </foreach>
+    </select>
 </mapper>
