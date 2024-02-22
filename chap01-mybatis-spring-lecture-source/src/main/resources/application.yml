@@ -1,6 +1,12 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbc-url: jdbc:mysql://localhost:3306/menudb
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    jdbc-url: jdbc:mysql://localhost:3306/menudb
+    # Log ?? ? ??? ?? ????
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/menudb
     username: swcamp
     password: swcamp
+
+  logging:
+    config: classpath:log4j2.xml

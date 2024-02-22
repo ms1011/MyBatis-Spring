@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+    <!-- Appenders -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <Pattern>%d %5p [%c] %m%n %r</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- info부터 적용 table사용시 -->
+    <logger name="jdbc.resultsettable" additivity="false">
+        <level value="info" />
+        <appender-ref ref="console" />
+    </logger>
+
+    <!-- sql 로깅 -->
+    <!-- SQL문이 preparedStatement일 경우 argument값으로 대체된 SQL문 출력 -->
+    <logger name="jdbc.sqlonly" additivity="false">
+        <level value="info" />
+        <appender-ref ref="console" />
+    </logger>
+
+    <!-- resultset제외한 모든 jdbc 호출 정보 출력 -->
+    <logger name="jdbc.audit" additivity="false">
+        <level value="info" />
+        <appender-ref ref="console" />
+    </logger>
+
+    <!-- info부터 적용 기본적인 resultset-->
+    <!-- resultset을 포함한 모든 jdbc 호출 정보 로그 -->
+    <!-- resultsettable 만 사용하기 위해서 로그레벨은 warning시킨다. resultset이 중복됨 -->
+    <logger name="jdbc.resultset" additivity="false">
+        <level value="info" />
+        <appender-ref ref="console" />
+    </logger>
+
+    <!-- 수행시간을 찍는다-->
+    <logger name="jdbc.sqltiming" additivity="false">
+        <level value="info" />
+        <appender-ref ref="console" />
+    </logger>
+
+    <!-- Root Logger -->
+    <root level="off">
+        <appender-ref ref="console" />
+    </root>
+</configuration>
