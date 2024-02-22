@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/menudb
+    username: swcamp
+    password: swcamp
+
+  logging:
+    config: classpath:log4j2.xml
