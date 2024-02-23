@@ -27,6 +27,10 @@ public class OrderMenu {
         return orderCode;
     }
 
+    public void setOrderCode(int orderCode) {
+        this.orderCode = orderCode;
+    }
+
     public int getOrderAmount() {
         return orderAmount;
     }

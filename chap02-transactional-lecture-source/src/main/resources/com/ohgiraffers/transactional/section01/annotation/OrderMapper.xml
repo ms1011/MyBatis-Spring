@@ -4,7 +4,8 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ohgiraffers.transactional.section01.annotation.OrderMapper">
-    <parameterMap id="orderParameterMap" type="com.ohgiraffers.transactional.section01.annotation.Order"></parameterMap>
+    <parameterMap id="orderParameterMap" type="com.ohgiraffers.transactional.section01.annotation.Order"/>
+    <parameterMap id="orderMenuParameterMap" type="com.ohgiraffers.transactional.section01.annotation.OrderMenu"/>
 
     <insert id="registOrder" parameterMap="orderParameterMap">
         INSERT
@@ -19,6 +20,26 @@
               #{orderDate}
             , #{orderTime}
             , #{totalOrderPrice}
+        )
+        <selectKey keyProperty="orderCode" order="AFTER" resultType="_int">
+<!--            SELECT LAST_INSERT_ID()-->
+            SELECT MAX(ORDER_CODE) FROM TBL_ORDER
+        </selectKey>
+    </insert>
+
+    <insert id="registOrderMenu" parameterMap="orderMenuParameterMap">
+        INSERT
+            INTO TBL_ORDER_MENU
+        (
+              ORDER_CODE
+            , MENU_CODE
+            , ORDER_AMOUNT
+        )
+        VALUES
+        (
+              #{orderCode}
+            , #{menuCode}
+            , #{orderAmount}
         )
     </insert>
 </mapper>
