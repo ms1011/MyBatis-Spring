@@ -4,5 +4,21 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ohgiraffers.transactional.section01.annotation.OrderMapper">
+    <parameterMap id="orderParameterMap" type="com.ohgiraffers.transactional.section01.annotation.Order"></parameterMap>
 
+    <insert id="registOrder" parameterMap="orderParameterMap">
+        INSERT
+            INTO TBL_ORDER
+        (
+              ORDER_DATE
+            , ORDER_TIME
+            , TOTAL_ORDER_PRICE
+        )
+        VALUES
+        (
+              #{orderDate}
+            , #{orderTime}
+            , #{totalOrderPrice}
+        )
+    </insert>
 </mapper>
